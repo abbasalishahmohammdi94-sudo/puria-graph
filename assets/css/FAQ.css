@@ -1,0 +1,240 @@
+@font-face {
+  font-family: "morabba";
+  src: url("../fonts/Morabba-Bold.ttf") format("truetype");
+}
+:root {
+  --gold: rgb(223, 173, 46);
+  --gold-light: rgb(249, 226, 122);
+  --brown-dark: rgb(55, 49, 49);
+  --black: rgb(34, 32, 35);
+  --white: #ffffff;
+  --text-muted: rgb(190, 185, 185);
+}
+.accordion-box {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+/* ================================
+   ULTRA PREMIUM GOLD FAQ
+================================ */
+
+.accordion {
+    counter-reset: faq;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CARD */
+.accordion-item {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgb(42, 40, 43),
+            var(--black)
+        );
+
+    border: 1px solid rgba(223, 173, 46, .18);
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .25);
+
+    transition: .4s cubic-bezier(.2,.8,.2,1);
+}
+
+/* نور طلایی بالای کارت */
+.accordion-item::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    right: 50%;
+
+    width: 0;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-light),
+            var(--gold),
+            transparent
+        );
+
+    transform: translateX(50%);
+
+    transition: .5s ease;
+}
+
+.accordion-item:hover::before,
+.accordion-item:has(
+    .accordion-button:not(.collapsed)
+)::before {
+    width: 100%;
+}
+
+/* HOVER */
+.accordion-item:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(223,173,46,.45);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4),
+        0 0 30px rgba(223,173,46,.08);
+}
+
+
+/* QUESTION */
+.accordion-button {
+    counter-increment: faq;
+
+    position: relative;
+
+    padding: 23px 25px;
+
+    background: transparent !important;
+
+    color: var(--white) !important;
+
+    font-family: "morabba";
+    font-size: 17px;
+
+    border: 0;
+
+    box-shadow: none !important;
+
+    transition: .35s ease;
+}
+
+/* NUMBER */
+.accordion-button::before {
+    content: "0" counter(faq);
+
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+
+    opacity: .6;
+
+    margin-left: 18px;
+
+    letter-spacing: 1px;
+
+    transition: .3s ease;
+}
+
+/* ACTIVE */
+.accordion-button:not(.collapsed) {
+    color: var(--gold-light) !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(223,173,46,.10),
+            transparent
+        ) !important;
+}
+
+.accordion-button:not(.collapsed)::before {
+    color: var(--gold-light);
+    opacity: 1;
+
+    text-shadow:
+        0 0 12px rgba(223,173,46,.7);
+}
+
+
+/* ACTIVE GOLD BAR */
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0)
+        saturate(100%)
+        invert(80%)
+        sepia(70%)
+        saturate(700%)
+        hue-rotate(5deg);
+}
+
+
+/* ARROW */
+.accordion-button::after {
+    filter: brightness(0)
+        saturate(100%)
+        invert(75%)
+        sepia(60%)
+        saturate(700%)
+        hue-rotate(5deg);
+
+    transition: .4s ease;
+}
+
+
+/* ANSWER */
+.accordion-body {
+    position: relative;
+
+    padding: 20px 28px 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(223,173,46,.035),
+            transparent 40%
+        );
+
+    border-top:
+        1px solid rgba(223,173,46,.12);
+
+    color: var(--text-muted);
+
+    font-family: "morabba";
+    font-size: 15px;
+
+    line-height: 2.1;
+}
+
+
+/* GOLD SIDE ACCENT */
+.accordion-body::before {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 15px;
+
+    width: 2px;
+    height: calc(100% - 30px);
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(223,173,46,.45);
+}
+
+
+/* TEXT GLOW ON ACTIVE */
+.accordion-item:has(
+    .accordion-button:not(.collapsed)
+) {
+    border-color:
+        rgba(223,173,46,.55);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.4),
+        0 0 35px rgba(223,173,46,.10);
+}

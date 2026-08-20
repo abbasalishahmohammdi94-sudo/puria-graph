@@ -67,6 +67,14 @@ clickable: true,
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
+console.log("MENU:", menuToggle);
+console.log("NAV:", navLinks);
+
 menuToggle.addEventListener("click", () => {
-navLinks.classList.toggle("active");
-}); 
+
+  console.log("CLICKED!");
+
+  navLinks.classList.toggle("active");
+
+  console.log(navLinks.classList);
+});
