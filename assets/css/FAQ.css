@@ -15,226 +15,256 @@
   margin: 10px;
   border-radius: 10px;
 }
+
+nav{
+    direction: ltr;
+}
+.navbar-brand {
+  color: var(--gold);
+  font-weight: 500;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: 0.7s;
+  direction: ltr;
+}
+
+.navbar-brand span {
+  color: var(--gold);
+  transition: 0.7s;
+}
+
+.navbar-brand span:hover {
+  color: var(--gold-light);
+}
+
+.navbar-brand:hover {
+  color: var(--gold-light);
+}
+
+html,
+body,
+main,
+nav {
+  min-height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--black) 0%,
+    var(--brown-dark) 70%,
+    rgb(72, 61, 40) 100%
+  );    
+}
+
 /* ================================
    ULTRA PREMIUM GOLD FAQ
 ================================ */
 
 .accordion {
-    counter-reset: faq;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  counter-reset: faq;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 /* CARD */
 .accordion-item {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgb(42, 40, 43),
-            var(--black)
-        );
+  background: linear-gradient(145deg, rgb(42, 40, 43), var(--black));
 
-    border: 1px solid rgba(223, 173, 46, .18);
-    border-radius: 18px !important;
+  border: 1px solid rgba(223, 173, 46, 0.18);
+  border-radius: 18px !important;
 
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, .25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 
-    transition: .4s cubic-bezier(.2,.8,.2,1);
+  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* نور طلایی بالای کارت */
 .accordion-item::before {
-    content: "";
+  content: "";
 
-    position: absolute;
-    top: 0;
-    right: 50%;
+  position: absolute;
+  top: 0;
+  right: 50%;
 
-    width: 0;
-    height: 2px;
+  width: 0;
+  height: 2px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-light),
-            var(--gold),
-            transparent
-        );
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-light),
+    var(--gold),
+    transparent
+  );
 
-    transform: translateX(50%);
+  transform: translateX(50%);
 
-    transition: .5s ease;
+  transition: 0.5s ease;
 }
 
 .accordion-item:hover::before,
-.accordion-item:has(
-    .accordion-button:not(.collapsed)
-)::before {
-    width: 100%;
+.accordion-item:has(.accordion-button:not(.collapsed))::before {
+  width: 100%;
 }
 
 /* HOVER */
 .accordion-item:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 
-    border-color: rgba(223,173,46,.45);
+  border-color: rgba(223, 173, 46, 0.45);
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.4),
-        0 0 30px rgba(223,173,46,.08);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(223, 173, 46, 0.08);
 }
-
 
 /* QUESTION */
 .accordion-button {
-    counter-increment: faq;
+  counter-increment: faq;
 
-    position: relative;
+  position: relative;
 
-    padding: 23px 25px;
+  padding: 23px 25px;
 
-    background: transparent !important;
+  background: transparent !important;
 
-    color: var(--white) !important;
+  color: var(--white) !important;
 
-    font-family: "morabba";
-    font-size: 17px;
+  font-family: "morabba";
+  font-size: 17px;
 
-    border: 0;
+  border: 0;
 
-    box-shadow: none !important;
+  box-shadow: none !important;
 
-    transition: .35s ease;
+  transition: 0.35s ease;
 }
 
 /* NUMBER */
 .accordion-button::before {
-    content: "0" counter(faq);
+  content: "0" counter(faq);
 
-    color: var(--gold);
+  color: var(--gold);
 
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
 
-    opacity: .6;
+  opacity: 0.6;
 
-    margin-left: 18px;
+  margin-left: 18px;
 
-    letter-spacing: 1px;
+  letter-spacing: 1px;
 
-    transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 /* ACTIVE */
 .accordion-button:not(.collapsed) {
-    color: var(--gold-light) !important;
+  color: var(--gold-light) !important;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(223,173,46,.10),
-            transparent
-        ) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(223, 173, 46, 0.1),
+    transparent
+  ) !important;
 }
 
 .accordion-button:not(.collapsed)::before {
-    color: var(--gold-light);
-    opacity: 1;
+  color: var(--gold-light);
+  opacity: 1;
 
-    text-shadow:
-        0 0 12px rgba(223,173,46,.7);
+  text-shadow: 0 0 12px rgba(223, 173, 46, 0.7);
 }
-
 
 /* ACTIVE GOLD BAR */
 .accordion-button:not(.collapsed)::after {
-    filter: brightness(0)
-        saturate(100%)
-        invert(80%)
-        sepia(70%)
-        saturate(700%)
-        hue-rotate(5deg);
+  filter: brightness(0) saturate(100%) invert(80%) sepia(70%) saturate(700%)
+    hue-rotate(5deg);
 }
-
 
 /* ARROW */
 .accordion-button::after {
-    filter: brightness(0)
-        saturate(100%)
-        invert(75%)
-        sepia(60%)
-        saturate(700%)
-        hue-rotate(5deg);
+  filter: brightness(0) saturate(100%) invert(75%) sepia(60%) saturate(700%)
+    hue-rotate(5deg);
 
-    transition: .4s ease;
+  transition: 0.4s ease;
 }
-
 
 /* ANSWER */
 .accordion-body {
-    position: relative;
+  position: relative;
 
-    padding: 20px 28px 24px;
+  padding: 20px 28px 24px;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(223,173,46,.035),
-            transparent 40%
-        );
+  background: linear-gradient(
+    90deg,
+    rgba(223, 173, 46, 0.035),
+    transparent 40%
+  );
 
-    border-top:
-        1px solid rgba(223,173,46,.12);
+  border-top: 1px solid rgba(223, 173, 46, 0.12);
 
-    color: var(--text-muted);
+  color: var(--text-muted);
 
-    font-family: "morabba";
-    font-size: 15px;
+  font-family: "morabba";
+  font-size: 15px;
 
-    line-height: 2.1;
+  line-height: 2.1;
 }
-
 
 /* GOLD SIDE ACCENT */
 .accordion-body::before {
-    content: "";
+  content: "";
 
-    position: absolute;
+  position: absolute;
 
-    right: 0;
-    top: 15px;
+  right: 0;
+  top: 15px;
 
-    width: 2px;
-    height: calc(100% - 30px);
+  width: 2px;
+  height: calc(100% - 30px);
 
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            var(--gold),
-            transparent
-        );
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
 
-    box-shadow:
-        0 0 12px rgba(223,173,46,.45);
+  box-shadow: 0 0 12px rgba(223, 173, 46, 0.45);
 }
 
-
 /* TEXT GLOW ON ACTIVE */
-.accordion-item:has(
-    .accordion-button:not(.collapsed)
-) {
-    border-color:
-        rgba(223,173,46,.55);
+.accordion-item:has(.accordion-button:not(.collapsed)) {
+  border-color: rgba(223, 173, 46, 0.55);
 
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.4),
-        0 0 35px rgba(223,173,46,.10);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.4),
+    0 0 35px rgba(223, 173, 46, 0.1);
+}
+.accordion-button {
+    direction: rtl;
+    text-align: right;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.accordion-button::after {
+    margin-right: auto;
+    margin-left: 0;
+}   
+.BackToHome{
+    text-decoration: none;
+    color: var(--gold-light);
+    direction: rtl;
+    background-color: var(--brown-dark);
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'morabba';
+    transition: 0.7s;
+}   
+.BackToHome:hover{
+    color: var(--gold);
+    border-radius:20px ;
 }

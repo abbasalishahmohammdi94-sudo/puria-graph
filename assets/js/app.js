@@ -1,3 +1,7 @@
+// ==================================================
+// COUNTERS
+// ==================================================
+
 const counters = document.querySelectorAll(".stat h3");
 
 const observer = new IntersectionObserver(
@@ -37,32 +41,36 @@ counters.forEach((counter) => {
   observer.observe(counter);
 });
 
-
-
-// سوایپر
-
+// ==================================================
+// SWIPER
+// ==================================================
 
 const portfolioSwiper = new Swiper(".portfolioSwiper", {
-loop: true,
+  loop: true,
 
-grabCursor: true,
-allowTouchMove: true,
+  grabCursor: true,
 
-navigation: {
-nextEl: ".swiper-button-next",
-prevEl: ".swiper-button-prev",
-},
+  allowTouchMove: true,
 
-autoplay: {
-delay: 4000,
-disableOnInteraction: false,
-},
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 
-pagination: {
-el: ".swiper-pagination",
-clickable: true,
-},
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
 });
+
+// ==================================================
+// MOBILE MENU
+// ==================================================
 
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
@@ -70,11 +78,69 @@ const navLinks = document.querySelector(".nav-links");
 console.log("MENU:", menuToggle);
 console.log("NAV:", navLinks);
 
-menuToggle.addEventListener("click", () => {
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    console.log("CLICKED!");
 
-  console.log("CLICKED!");
+    navLinks.classList.toggle("active");
 
-  navLinks.classList.toggle("active");
+    console.log(navLinks.classList);
+  });
+}
 
-  console.log(navLinks.classList);
-});
+// ==================================================
+// BACK TO TOP
+// ==================================================
+
+const backToTop = document.getElementById("backToTop");
+
+function checkScroll() {
+  const scrollPosition = window.scrollY;
+
+  // از 500px به بعد دکمه نمایش داده شود
+  if (backToTop) {
+    if (scrollPosition >= 500) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  }
+}
+
+// ==================================================
+// SCROLL EVENT
+// ==================================================
+
+window.addEventListener("scroll", checkScroll);
+
+// ==================================================
+// RESIZE EVENT
+// ==================================================
+
+window.addEventListener("resize", checkScroll);
+
+// ==================================================
+// PAGE LOAD
+// ==================================================
+
+window.addEventListener("load", checkScroll);
+
+// ==================================================
+// BACK TO TOP CLICK
+// ==================================================
+
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+
+      behavior: "smooth",
+    });
+  });
+}
+
+// ==================================================
+// INITIAL CHECK
+// ==================================================
+
+checkScroll();
