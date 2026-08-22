@@ -144,3 +144,197 @@ if (backToTop) {
 // ==================================================
 
 checkScroll();
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const portfolioWrapper =
+        document.getElementById("portfolio-wrapper");
+
+    if (!portfolioWrapper) {
+        return;
+    }
+
+
+    // ==================================================
+    // آدرس Worker
+    // ==================================================
+
+    const API_URL =
+        "https://admin-pg-git.natanzcity-official.workers.dev/";
+
+
+    try {
+
+        // ==================================================
+        // دریافت تصاویر
+        // ==================================================
+
+        const response =
+            await fetch(API_URL);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "خطا در ارتباط با Worker"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !data.success ||
+            !Array.isArray(data.images)
+        ) {
+
+            throw new Error(
+                "اطلاعات تصاویر معتبر نیست."
+            );
+
+        }
+
+
+        // ==================================================
+        // ساخت اسلایدها
+        // ==================================================
+
+        portfolioWrapper.innerHTML = "";
+
+
+        data.images.forEach(
+            (image, index) => {
+
+                const slide =
+                    document.createElement("div");
+
+
+                slide.className =
+                    "swiper-slide";
+
+
+                const img =
+                    document.createElement("img");
+
+
+                img.src =
+                    image.url;
+
+
+                img.alt =
+                    `پروژه ${index + 1}`;
+
+
+                img.loading =
+                    index === 0
+                        ? "eager"
+                        : "lazy";
+
+
+                img.decoding =
+                    "async";
+
+
+                slide.appendChild(img);
+
+
+                portfolioWrapper.appendChild(
+                    slide
+                );
+
+            }
+        );
+
+
+        // ==================================================
+        // اگر هیچ تصویری نبود
+        // ==================================================
+
+        if (
+            data.images.length === 0
+        ) {
+
+            portfolioWrapper.innerHTML = `
+                <div class="portfolio-empty">
+                    هنوز پروژه‌ای اضافه نشده.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        // ==================================================
+        // Swiper
+        // ==================================================
+
+        new Swiper(
+            ".portfolioSwiper",
+            {
+
+                slidesPerView: 1,
+
+                spaceBetween: 0,
+
+                centeredSlides: false,
+
+                loop:
+                    data.images.length > 1,
+
+                grabCursor: true,
+
+                watchOverflow: true,
+
+
+                navigation: {
+
+                    nextEl:
+                        ".portfolioSwiper .swiper-button-next",
+
+                    prevEl:
+                        ".portfolioSwiper .swiper-button-prev"
+
+                },
+
+
+                pagination: {
+
+                    el:
+                        ".portfolioSwiper .swiper-pagination",
+
+                    clickable: true
+
+                },
+
+
+                autoplay: {
+
+                    delay: 4000,
+
+                    disableOnInteraction: false
+
+                }
+
+            }
+        );
+
+
+        console.log(
+            `✅ ${data.images.length} پروژه دریافت شد.`
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "❌ Portfolio Error:",
+            error
+        );
+
+    }
+
+});

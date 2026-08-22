@@ -1,0 +1,211 @@
+  <!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Puria Graph | Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <main class="admin-container">
+
+        <!-- ==============================
+             LOGIN
+        =============================== -->
+
+        <section
+            class="login-box"
+            id="loginBox"
+        >
+
+            <div class="logo">
+                PURIA GRAPH
+            </div>
+
+            <p class="tag">
+                ADMIN PANEL
+            </p>
+
+            <h1>
+                ورود به پنل
+            </h1>
+
+            <p class="description">
+                برای مدیریت Portfolio رمز عبور را وارد کنید.
+            </p>
+
+            <form id="loginForm">
+
+                <label for="password">
+                    رمز عبور
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="رمز عبور..."
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                >
+                    ورود
+                </button>
+
+            </form>
+
+            <p
+                class="message"
+                id="loginMessage"
+            ></p>
+
+        </section>
+
+
+        <!-- ==============================
+             ADMIN PANEL
+        =============================== -->
+
+        <section
+            class="panel-box hidden"
+            id="panelBox"
+        >
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="tag">
+                        PURIA GRAPH
+                    </p>
+
+                    <h1>
+                        مدیریت Portfolio
+                    </h1>
+
+                </div>
+
+                <button
+                    class="logout-button"
+                    id="logoutButton"
+                    type="button"
+                >
+                    خروج
+                </button>
+
+            </div>
+
+
+            <!-- Upload -->
+
+            <div class="upload-area">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h2>
+                    آپلود پروژه جدید
+                </h2>
+
+                <p>
+                    JPG، PNG، WEBP یا GIF
+                    <br>
+                    حداکثر 10MB
+                </p>
+
+                <input
+                    id="imageInput"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    hidden
+                >
+
+                <label
+                    for="imageInput"
+                    class="select-button"
+                >
+                    انتخاب تصویر
+                </label>
+
+                <div
+                    class="preview hidden"
+                    id="preview"
+                >
+
+                    <img
+                        id="previewImage"
+                        alt="Preview"
+                    >
+
+                    <p id="fileName"></p>
+
+                </div>
+
+                <button
+                    id="uploadButton"
+                    class="upload-button"
+                    type="button"
+                    disabled
+                >
+                    آپلود تصویر
+                </button>
+
+                <p
+                    class="message"
+                    id="uploadMessage"
+                ></p>
+
+            </div>
+
+
+            <!-- Existing Works -->
+
+            <div class="works-section">
+
+                <div class="works-title">
+
+                    <h2>
+                        پروژه‌های موجود
+                    </h2>
+
+                    <span id="worksCount">
+                        0 پروژه
+                    </span>
+
+                </div>
+
+                <div
+                    class="works-grid"
+                    id="worksGrid"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
